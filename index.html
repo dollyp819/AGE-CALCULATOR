@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    background-image: url(jj.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+
+    }
+    section{
+    border: 100px;
+    border-radius: 20px;
+      width: 500px;
+      background-image: linear-gradient(to bottom, yellow, red, rgb(94, 111, 207));
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label{
+        display: block;
+        font-size: 1.5rem;
+        font-family: 'Times New Roman', Times, serif;
+        margin: 10px 0 5px;
+        padding-left: 20px;
+    }
+    input{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+        border-radius: 10px;
+        width: 90%;
+        padding: 10px;
+     margin-left: 10px;
+        background-color: rgb(86, 86, 197);
+        
+    }
+    button{
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 10px;
+        background-color: rgb(85, 85, 170);
+        font-size: 2rem;
+        margin-top: 40px;
+        padding: 12px 25px;
+        cursor: pointer;
+        border: none;
+        margin-left: 150px;
+        margin-bottom: 20px;
+    }
+
+
+</style>
+<body>
+    <!-- <h1>YOU CAN CHECK AND CALCULATE YOUR AGE FROM THIS WEBSITE</h1><br> -->
+    <section>
+        <label for=""> DATE OF BIRTH</label>
+        <input type="date" value="2000-01-01" id="inputdob">
+        <label for="">CURRENT DATE</label>
+        <input type="date" value="" id="cdate">
+        <button type="button" onclick="getdob()">SUBMIT</button>
+
+        <div id="currentage"></div>
+    </section>
+    <script>
+        function getdob(){
+            // get the values from the input fields
+          const x=  document.getElementById("inputdob").value;
+        const y = document.getElementById("cdate").value;
+
+            // validate if both date are proivded
+            
+            if(!x || !y){
+                alert("please enter both date of birth and current date")
+                return;
+            }
+            // convert input value to date object
+            const dob = new Date(x) 
+             const currentdate= new Date(y)    
+                // calculate age
+                let age = currentdate. getFullYear()-dob.getFullYear()
+             const monthdifference = dob.getMonth() - currentdate.getMonth()
+            
+            if (monthdifference<0 || (monthdifference===0 & currentdate.getDate()< dob.getDate())){
+                    age--;
+            }
+            //  display result
+            document.getElementById("currentage").textContent = `your age is ${age} years  with ${monthdifference} months`
+
+        }
+        
+    </script>
+</body>
+</html>
